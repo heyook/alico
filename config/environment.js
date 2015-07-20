@@ -52,6 +52,8 @@ module.exports = function(environment) {
       proxyHost:  ''
     },
 
+    ENV.stripe.key = 'abc';
+
     // Testem prefers this...
     ENV.baseURL = '/';
     ENV.locationType = 'none';
