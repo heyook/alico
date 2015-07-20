@@ -1,0 +1,73 @@
+<h2 class='title'>{{model.uid}}</h2>
+
+<table class="table table-stripe">
+  <thead>
+    <tr>
+      <td class='name'>{{t 'product_name'}}</td>
+      <td class='price'>{{t 'price'}}</td>
+    </tr>
+  </thead>
+  <tbody class='products'>
+    {{#each model.products as |product|}}
+      <tr class='product'>
+        <td class='name'>{{product.name}}</td>
+        <td class='price'>{{dollar-format product.price}}</td>
+      </tr>
+    {{/each}}
+    <tr class='subTotal total'>
+      <td class='name'>{{t 'subTotal'}}</td>
+      <td class='price'>{{dollar-format model.subTotal}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="table table-stripe">
+  <thead>
+    <tr>
+      <td class='name'>{{t 'fee'}}</td>
+      <td class='price'>{{t 'price'}}</td>
+    </tr>
+  </thead>
+  <tbody class='fees'>
+    {{#each model.fees as |fee|}}
+      <tr class='fee'>
+        <td class='name'>{{fee.name}}</td>
+        <td class='price'>{{dollar-format fee.price}}</td>
+      </tr>
+    {{/each}}
+    <tr class='feeTotal total'>
+      <td class='name'>{{t 'feeTotal'}}</td>
+      <td class='price'>{{dollar-format model.feeTotal}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="table">
+  <tbody>
+    <tr class='allTotal total'>
+      <td class='name text-right'>{{t 'total'}}</td>
+      <td class='price'>{{dollar-format model.price}}</td>
+    </tr>
+  </tbody>
+</table>
+
+{{#if model.charged}}
+  <div class='charged alert alert-success text-center'>{{t 'thanksForPayment'}}</div>
+{{else}}
+  <div class='checkout text-right'>
+    {{stripe-checkout
+      image="/assets/images/750.png"
+      name=model.products.firstObject.name
+      email=''
+      class="btn btn-lg btn-primary"
+      description=model.products.firstObject.name
+      label=(t 'payPrice')
+      isDisabled=false
+      amount=model.price
+      action="processStripeToken"
+      allowRememberMe=false
+      alipay=true
+      alipay-reusable=true
+    }}
+  </div>
+{{/if}}

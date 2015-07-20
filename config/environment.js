@@ -14,8 +14,16 @@ module.exports = function(environment) {
     },
 
     APP: {
-      // Here you can pass flags/options to your application instance
-      // when it is created
+
+    },
+
+    i18n: {
+      defaultLocale: 'zh' // default value
+    },
+
+    stripe: {
+      key: process.env.STRIPE_PK_KEY,
+      locale: "zh-CN"
     }
   };
 
@@ -25,9 +33,25 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
+    ENV.alico = {
+      proxyHost:   'http://alicoapi.ngrok.com'
+    },
+
+    ENV.contentSecurityPolicy = {
+      'connect-src': "'self' http://127.0.0.1:3000 ws://127.0.0.1:35729 http://127.0.0.1:4200 http://*.ngrok.com",
+      'script-src' : "'self' 'unsafe-eval' http://127.0.0.1:35729 https://*.stripe.com http://*.cloudflare.com http://*.ngrok.com",
+      'frame-src'  : "'self' https://*.stripe.com http://*.ngrok.com",
+      'style-src'  : "'self' 'unsafe-inline'",
+      'object-src' : "'self' http://*.ngrok.com",
+      'img-src'    : "'self' https://*.amazonaws.com https://*.stripe.com http://*.ngrok.com http://127.0.0.1:4200"
+    }
   }
 
   if (environment === 'test') {
+    ENV.alico = {
+      proxyHost:  ''
+    },
+
     // Testem prefers this...
     ENV.baseURL = '/';
     ENV.locationType = 'none';
@@ -40,6 +64,16 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
+    ENV.formee = {
+      proxyHost:  'http://api.alico.com'
+    },
+
+    ENV.contentSecurityPolicy = {
+      'script-src' : "'self' 'unsafe-eval' https://*.stripe.com http://*.cloudflare.com",
+      'frame-src'  : "'self' https://*.stripe.com",
+      'style-src'  : "'self' 'unsafe-inline'",
+      'img-src'    : "'self' https://*.amazonaws.com https://*.stripe.com"
+    }
 
   }
 
