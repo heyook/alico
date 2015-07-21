@@ -1,11 +1,12 @@
 export default {
-  product_name: "商品名称",
+  product: "商品",
   price: "价格",
   fee: "费用",
-  subTotal: "商品总价",
+  subTotal: "小计",
   total: "总额",
   feeTotal: '费用总额',
   payPrice: '请点击这里付款',
   pay: '付款',
-  thanksForPayment: '付款成功，谢谢！'
+  thanksForPayment: '付款成功，谢谢！',
+  invoiceNumber: '订单号'
 };

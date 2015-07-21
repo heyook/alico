@@ -5,18 +5,29 @@ body
   font-family: $font-base
   background-color: $gray-light
 
-.invoice-view
-  margin: 20px auto 
+.invoice
+  margin: 20px auto
   width: 320px
   background-color: $white
   padding: 20px
+  color: $gray-dark
+  .title
+    margin: 10px 0 20px 0
+    color: $gray
   td.price
     width: 80px
   .total
     font-weight: 700
     &.allTotal
       font-size: 1.2em
-
+  .alert
+    margin: 0
   .checkout
     button
       width: 100%
+
+.stripe
+  background-image: url(images/stripe.png)
+  width: 119px
+  height: 26px
+  margin: auto

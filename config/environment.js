@@ -67,7 +67,7 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     ENV.formee = {
-      proxyHost:  'http://api.alico.com'
+      proxyHost:  'https://alico-api.herokuapp.com'
     },
 
     ENV.contentSecurityPolicy = {
