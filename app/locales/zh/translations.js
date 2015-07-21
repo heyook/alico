@@ -5,7 +5,7 @@ export default {
   subTotal: "小计",
   total: "总额",
   feeTotal: '费用总额',
-  payPrice: '请点击这里付款',
+  payPrice: '请点击这里使用支付宝付款',
   pay: '付款',
   thanksForPayment: '付款成功，谢谢！',
   invoiceNumber: '订单号'

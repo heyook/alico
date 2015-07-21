@@ -22,7 +22,7 @@ module.exports = function(environment) {
     },
 
     stripe: {
-      key: process.env.STRIPE_PK_KEY,
+      key: 'pk_test_EDtQfWDi2sKC7vIAtxQZukU0',
       locale: "zh-CN"
     }
   };
@@ -66,9 +66,11 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    ENV.formee = {
+    ENV.alico = {
       proxyHost:  'https://alico-api.herokuapp.com'
     },
+
+    ENV.stripe.key = 'pk_live_IS7xYwBWo5H3cUOkXO4Dk3Ea';
 
     ENV.contentSecurityPolicy = {
       'script-src' : "'self' 'unsafe-eval' https://*.stripe.com http://*.cloudflare.com",
