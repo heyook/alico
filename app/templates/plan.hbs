@@ -1,0 +1,63 @@
+<div class='plan'>
+  <h4 class='title header' style="background-image: url({{model.image_url}})">{{model.name}}</h4>
+
+  <table class="table table-stripe">
+    <thead>
+      <tr>
+        <td class='name'>{{t 'plan'}}</td>
+        <td class='price'>{{t 'price'}}</td>
+      </tr>
+    </thead>
+    <tbody class='plans'>
+      <tr class='plan'>
+          <td class='name'>{{model.name}}</td>
+          <td class='price'>{{dollar-format model.price}} / {{t 'month'}}</td>
+      </tr>
+      <tr class='subTotal total'>
+        <td class='name'>{{t 'subTotal'}}</td>
+        <td class='price'>{{dollar-format model.price}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p class='title'>{{t 'planSubscribers' count=model.users.length}}</p>
+  <table class="table table-stripe">
+    <thead>
+      <tr>
+        <td class='name'>{{t 'username'}}</td>
+        <td class='email'>{{t 'email'}}</td>
+      </tr>
+    </thead>
+    <tbody class='users'>
+      {{#each model.users as |user|}}
+        <tr class='user'>
+          <td class='name'>{{user.name}}</td>
+          <td class='email'>{{user.email}}</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+  {{#if model.subscription}}
+    <div class='charged alert alert-success text-center'>{{t 'thanksForPayment'}}</div>
+  {{else}}
+    <div class='checkout text-right'>
+      {{stripe-checkout
+        image="/assets/images/logo.png"
+        name=model.name
+        email=''
+        class="btn btn-lg btn-success"
+        description=model.products.firstObject.name
+        label=(t 'payClick')
+        isDisabled=false
+        amount=model.price
+        action="processStripeToken"
+        allowRememberMe=false
+        alipay=true
+        alipay-reusable=true
+      }}
+    </div>
+  {{/if}}
+</div>
+
+<div class='stripe'></div>

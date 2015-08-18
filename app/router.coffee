@@ -5,5 +5,6 @@ Router = Ember.Router.extend(location: config.locationType)
 Router.map ->
   @route 'invoices', ->
     @resource 'invoice', path: "/:invoice_id"
+  @route 'plan', path: "/plan/:plan_id"
 
 `export default Router`

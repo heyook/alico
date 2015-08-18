@@ -1,22 +1,23 @@
 `import Ember from 'ember'`
 `import ApplicationController from './application'`
 
-InvoiceController = ApplicationController.extend Ember.Evented,
+PlanController = ApplicationController.extend Ember.Evented,
 
   actions:
 
     processStripeToken: (token) ->
       Em.Logger.info token
-      charge = @store.createRecord 'charge',
+
+      subscription = @store.createRecord 'subscription',
         token: token.id
-        invoice: @get('model')
-        price_in_cents: @get('model.price')
+        plan: @get('model')
         email: token.email
-      charge.save().then (response) =>
+
+      subscription.save().then (response) =>
         # TODO: show success
         Em.Logger.info response
       , (error) =>
         # TODO: show error
         Em.Logger.info error
 
-`export default InvoiceController`
+`export default PlanController`
