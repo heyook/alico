@@ -5,5 +5,7 @@ PlanSerializer = DS.RESTSerializer.extend DS.EmbeddedRecordsMixin,
   attrs:
     users:
       embedded: 'always'
+    fees:
+      embedded: 'always'
 
 `export default PlanSerializer`

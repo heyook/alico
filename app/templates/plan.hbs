@@ -20,6 +20,36 @@
     </tbody>
   </table>
 
+  <table class="table table-stripe">
+    <thead>
+      <tr>
+        <td class='name'>{{t 'fee'}}</td>
+        <td class='price'>{{t 'price'}}</td>
+      </tr>
+    </thead>
+    <tbody class='fees'>
+      {{#each model.fees as |fee|}}
+        <tr class='fee'>
+          <td class='name'>{{fee.name}}</td>
+          <td class='price'>{{dollar-format fee.price}} / {{t 'month'}}</td>
+        </tr>
+      {{/each}}
+      <tr class='feeTotal total'>
+        <td class='name'>{{t 'subTotal'}}</td>
+        <td class='price'>{{dollar-format model.feeTotal}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table class="table">
+    <tbody>
+      <tr class='allTotal total'>
+        <td class='name text-right'>{{t 'total'}}</td>
+        <td class='price'>{{dollar-format model.totalPrice}}</td>
+      </tr>
+    </tbody>
+  </table>
+
   <p class='title'>{{t 'planSubscribers' count=model.users.length}}</p>
   <table class="table table-stripe">
     <thead>
@@ -50,7 +80,7 @@
         description=model.products.firstObject.name
         label=(t 'payClick')
         isDisabled=false
-        amount=model.price
+        amount=model.totalPrice
         action="processStripeToken"
         allowRememberMe=false
         alipay=true
