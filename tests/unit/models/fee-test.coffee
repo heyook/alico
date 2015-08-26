@@ -4,7 +4,12 @@
 
 fee = null
 moduleForModel 'fee', {
-  needs: ["model:invoice", "model:product", "model:charge"]
+  needs: [
+    "model:invoice",
+    "model:product",
+    "model:charge",
+    "model:plan"
+  ]
   beforeEach: ->
     fee = @subject(name: "shipping", price: 200)
 }
