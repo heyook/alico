@@ -8,6 +8,7 @@ Invoice = DS.Model.extend
   products:   DS.hasMany("product", { async: false })
   uid:        DS.attr('string')
   charge:     DS.belongsTo('charge', { async: false })
+  image_url:  DS.attr('string')
 
   productPrices: mapBy    'products', 'price'
   subTotal:      sumArray 'productPrices'

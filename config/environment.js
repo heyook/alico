@@ -43,7 +43,7 @@ module.exports = function(environment) {
       'frame-src'  : "'self' https://*.stripe.com http://*.ngrok.com",
       'style-src'  : "'self' 'unsafe-inline'",
       'object-src' : "'self' http://*.ngrok.com",
-      'img-src'    : "'self' https://*.amazonaws.com https://*.stripe.com http://*.ngrok.com http://127.0.0.1:4200"
+      'img-src'    : "'self' https://*.amazonaws.com https://*.stripe.com http://*.ngrok.com http://127.0.0.1:4200 http://*.github.io"
     }
   }
 
@@ -76,7 +76,7 @@ module.exports = function(environment) {
       'script-src' : "'self' 'unsafe-eval' https://*.stripe.com http://*.cloudflare.com",
       'frame-src'  : "'self' https://*.stripe.com",
       'style-src'  : "'self' 'unsafe-inline'",
-      'img-src'    : "'self' https://*.amazonaws.com https://*.stripe.com"
+      'img-src'    : "'self' https://*.amazonaws.com https://*.stripe.com http://*.github.io"
     }
 
   }
