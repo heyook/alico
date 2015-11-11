@@ -7,3 +7,7 @@ Alipay Invoice App
 [travis-badge]: https://travis-ci.org/heyook/alico.svg
 [travis-badge-url]:
 https://travis-ci.org/heyook/alico
+
+### Deploy
+
+`ember deploy production --activate`
