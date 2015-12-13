@@ -67,7 +67,7 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     ENV.alico = {
-      proxyHost:  'https://alico-api.herokuapp.com'
+      proxyHost:  'http://alico-api.herokuapp.com.global.prod.fastly.net'
     },
 
     ENV.stripe.key = 'pk_live_IS7xYwBWo5H3cUOkXO4Dk3Ea';
